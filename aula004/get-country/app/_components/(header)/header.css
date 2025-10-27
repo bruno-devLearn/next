@@ -1,0 +1,83 @@
+header {
+    width: 100%;
+    background-color: var(--header-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+        rgba(0, 0, 0, 0.1) 0px 2px 4px -2px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1536px;
+    padding: 24px 16px;
+}
+
+h1 {
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.themeToggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    cursor: pointer;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 24px;
+}
+
+.themeToggle .icon {
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 1535px) {
+    .header {
+        max-width: 1280px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .header {
+        max-width: 1024px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .header {
+        max-width: 768px;
+    }
+}
+
+@media (max-width: 767px) {
+    .header {
+        max-width: 640px;
+    }
+}
+
+@media (max-width: 639px) {
+    .header {
+        max-width: 100%;
+    }
+}
+
+/* 
+oklch(0.21 0.034 264.665 
+oklch(0.21 0.034 264.665
+*/

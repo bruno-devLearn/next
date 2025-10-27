@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { Header } from "./_components/(header)/Header";
 import "./globals.css";
 
 export default function RootLayout({
@@ -5,9 +9,14 @@ export default function RootLayout({
 }: {
     children: React.ReactNode;
 }) {
+    const [theme, setTheme] = useState("light");
+
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body className={theme}>
+                <Header theme={theme} setTheme={setTheme} />
+                {children}
+            </body>
         </html>
     );
 }
