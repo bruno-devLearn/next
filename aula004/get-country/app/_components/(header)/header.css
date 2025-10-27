@@ -4,6 +4,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
         rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
         rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
@@ -35,11 +36,12 @@ h1 {
     border: none;
     font-size: 16px;
     font-weight: 400;
+    color: var(--text-primary);
+    line-height: 24px;
 }
 
 .themeToggle .icon {
     font-size: 20px;
-    color: var(--text-primary);
     display: flex;
     justify-content: center;
     align-items: center;
