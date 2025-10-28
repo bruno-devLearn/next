@@ -8,19 +8,19 @@ export async function fecther(
     try {
         if (country) {
             const res = await axios.get(
-                `https://restcountries.com/v3.1/name/${country}?fields=population,region,capital,name`
+                `https://restcountries.com/v3.1/name/${country}?fields=population,region,capital,name,cca3,flags`
             );
 
             return res.data;
         } else if (region !== "All Regions") {
             const res = await axios.get(
-                `https://restcountries.com/v3.1/region/${region}?fields=population,region,capital,name`
+                `https://restcountries.com/v3.1/region/${region}?fields=population,region,capital,name,cca3,flags`
             );
 
             return res.data;
         } else {
             const res = await axios.get(
-                "https://restcountries.com/v3.1/all?fields=population,region,capital,name"
+                "https://restcountries.com/v3.1/all?fields=population,region,capital,name,cca3,flags"
             );
 
             return res.data;

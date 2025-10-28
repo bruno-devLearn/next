@@ -1,0 +1,57 @@
+.card {
+    width: 100%;
+    background-color: var(--header-bg);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+        rgba(0, 0, 0, 0.1) 0px 2px 4px -2px;
+}
+
+.card:hover {
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+        rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px,
+        rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
+}
+
+.card .img {
+    position: relative; /* necessário para Next.js Image fill */
+    width: 100%;
+    aspect-ratio: 4 / 3; /* mantém proporção 4:3 */
+    overflow: hidden;
+}
+
+.card .img img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.info {
+    padding: 24px;
+}
+
+.name {
+    margin-bottom: 16px;
+    color: var(--text-primary);
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--info-color);
+}
+
+.title {
+    color: var(--text-primary);
+}
+
+a {
+    text-decoration: none;
+}
