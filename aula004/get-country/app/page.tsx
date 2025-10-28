@@ -5,6 +5,7 @@ import Loading from "./loading";
 import { Filters } from "./_utils/(pages)/filters";
 import { fecther } from "./_utils/(fetchs)/fecth";
 import { useState } from "react";
+import { Card } from "./_utils/(pages)/card";
 
 export default function Home() {
     const [country, setCountry] = useState(""); // input controlado
@@ -14,7 +15,6 @@ export default function Home() {
         queryKey: ["dataAll", country, region], // ← muda conforme os filtros
         queryFn: () => fecther(country, region), // ← função dinâmica
     });
-    console.log(data);
 
     return (
         <>
@@ -25,7 +25,17 @@ export default function Home() {
                 setRegion={setRegion}
             />
             {isPending ? <Loading /> : null}
-            {/* content here*/}
+            {data?.length > 0 ? (
+                <div className="cards">
+                    {data?.map((country) => (
+                        <Card country={country} key={country.cca3} />
+                    ))}
+                </div>
+            ) : (
+                <div className="not-found">
+                    No countries found. Try adjusting your search or filter.
+                </div>
+            )}
         </>
     );
 }
