@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Card({ country }) {
     return (
-        <Link href={`/country/${country.cca3}`}>
+        <Link href={`/country/${country.name.common}`}>
             <div className="card">
                 <div className="img">
                     <Image
