@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Cart({ movie }: { movie: Search }) {
     return (
-        <Link href={`/movie/${movie.imdbID}`}>
+        <Link href={`/movies/${movie.imdbID}`}>
             <div className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border overflow-hidden cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1">
                 <div className="aspect-[2/3] relative bg-slate-100">
                     {movie.Poster && movie.Poster !== "N/A" ? (
