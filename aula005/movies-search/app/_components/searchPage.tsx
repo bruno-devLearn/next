@@ -2,10 +2,12 @@
 
 import { FiFilm } from "react-icons/fi";
 import { CiSearch } from "react-icons/ci";
-import { useFav } from "./favorites";
+import { useFav } from "../_utils/favorites";
+import { useRouter } from "next/navigation";
 
 export function SearchPage() {
-    const { inputValue, updateInput } = useFav();
+    const { inputValue, updateInput, updateSearch } = useFav();
+    const router = useRouter();
 
     return (
         <div className="w-full max-w-2xl">
@@ -18,7 +20,14 @@ export function SearchPage() {
                     Pesquise por milhares de filmes e séries
                 </p>
             </div>
-            <form className="relative">
+            <form
+                className="relative"
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    updateSearch(inputValue);
+                    router.push("/results");
+                }}
+            >
                 <div className="relative">
                     <CiSearch className="lucide lucide-search absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input

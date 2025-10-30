@@ -1,5 +1,5 @@
 import { FavBtn } from "./_components/favbtn";
-import { SearchPage } from "./_utils/searchPage";
+import { SearchPage } from "./_components/searchPage";
 
 export default function Home() {
     return (
