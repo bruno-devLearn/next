@@ -7,14 +7,20 @@ export function Cart({ movie }: { movie: Search }) {
         <Link href={`/movie/${movie.imdbID}`}>
             <div className="bg-card text-card-foreground flex flex-col gap-6 rounded-xl border overflow-hidden cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1">
                 <div className="aspect-[2/3] relative bg-slate-100">
-                    <Image
-                        src={movie.Poster}
-                        alt={movie?.Title}
-                        fill
-                        className="w-full h-full object-cover"
-                        quality={100}
-                        priority
-                    />
+                    {movie.Poster && movie.Poster !== "N/A" ? (
+                        <Image
+                            src={movie.Poster}
+                            alt={movie.Title}
+                            fill
+                            className="w-full h-full object-cover"
+                            quality={100}
+                            priority
+                        />
+                    ) : (
+                        <div className="bg-slate-200 w-full h-full flex items-center justify-center">
+                            Sem imagem
+                        </div>
+                    )}
                 </div>
                 <div className="p-4">
                     <h3 className="line-clamp-2 mb-2">{movie.Title}</h3>

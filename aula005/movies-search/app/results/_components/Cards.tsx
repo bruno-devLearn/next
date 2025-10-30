@@ -4,16 +4,23 @@ import { useEffect, useState } from "react";
 import { getData } from "@/app/_utils/fetch";
 import { DataProps } from "@/app/_utils/types";
 import { Cart } from "./Card";
+import { Pages } from "./Pages";
 
-export function Cards({ inputValue }: { inputValue: string }) {
+export function Cards({
+    searchValue,
+    index,
+}: {
+    searchValue: string;
+    index: number;
+}) {
     const [data, setData] = useState<DataProps | null>(null);
 
     useEffect(() => {
-        if (!inputValue) return;
+        if (!searchValue) return;
 
         const fetchData = async () => {
             try {
-                const result = await getData(`s=${inputValue}`);
+                const result = await getData(`s=${searchValue}`, index);
                 setData(result);
             } catch (err) {
                 console.error("Erro ao buscar dados:", err);
@@ -21,7 +28,7 @@ export function Cards({ inputValue }: { inputValue: string }) {
         };
 
         fetchData();
-    }, [inputValue]);
+    }, [searchValue, index]);
 
     if (!data?.Search?.length) {
         return (
@@ -36,7 +43,7 @@ export function Cards({ inputValue }: { inputValue: string }) {
             <div className="mb-6">
                 <p className="text-slate-600">
                     Encontrados {data.totalResults} resultados para &quot;
-                    {inputValue}&quot;
+                    {searchValue}&quot;
                 </p>
             </div>
 
@@ -45,6 +52,8 @@ export function Cards({ inputValue }: { inputValue: string }) {
                     <Cart key={movie.imdbID} movie={movie} />
                 ))}
             </div>
+
+            <Pages movies={data} />
         </div>
     );
 }

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useFav } from "@/app/_utils/favorites";
 
 export function TopBar() {
-    const { inputValue, updateInput } = useFav();
+    const { updateSearch, inputValue, updateInput } = useFav();
 
     return (
         <div className="bg-white border-b sticky top-0 z-10 shadow-sm">
@@ -23,7 +23,10 @@ export function TopBar() {
                 </div>
                 <form
                     className="relative max-w-2xl"
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        updateSearch(inputValue);
+                    }}
                 >
                     <CiSearch className="lucide lucide-search absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
