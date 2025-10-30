@@ -18,7 +18,7 @@ export function FavBtn() {
                             <FaRegHeart className="lucide lucide-heart w-4 h-4 " />
                         )}
                     </div>
-                    <span>Favoritos</span>
+                    <span className="hidden sm:inline">Favoritos</span>
                     {favorites.length > 0 ? (
                         <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                             {favorites.length}

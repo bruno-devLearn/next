@@ -23,6 +23,4 @@ export function Cards({ inputValue }: { inputValue: string }) {
     }, [inputValue]);
 
     console.log(data);
-
-    return <h1>teste</h1>;
 }
