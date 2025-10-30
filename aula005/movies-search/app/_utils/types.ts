@@ -4,7 +4,7 @@ export interface DataProps {
     Response: string;
 }
 
-interface Search {
+export interface Search {
     Title: string;
     Year: string;
     imdbID: string;

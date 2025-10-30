@@ -21,7 +21,10 @@ export function TopBar() {
                     <h2 className="flex-1">Buscador de Filmes</h2>
                     <FavBtn />
                 </div>
-                <form className="relative max-w-2xl">
+                <form
+                    className="relative max-w-2xl"
+                    onSubmit={(e) => e.preventDefault()}
+                >
                     <CiSearch className="lucide lucide-search absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
                         type="text"
