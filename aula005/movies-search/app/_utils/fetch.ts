@@ -18,3 +18,25 @@ export async function getData(
         return {};
     }
 }
+
+export async function getFav(favorites: string[]): Promise<MovieProps[]> {
+    const apiKey = process.env.NEXT_PUBLIC_OMDB_API_KEY;
+
+    if (!favorites || favorites.length === 0) return [];
+
+    try {
+        const promises = favorites.map((id) =>
+            axios
+                .get(
+                    `http://www.omdbapi.com/?i=${id}&apikey=${apiKey}&plot=full`
+                )
+                .then((res) => res.data as MovieProps)
+        );
+
+        const results = await Promise.all(promises);
+        return results;
+    } catch (error) {
+        console.error("Erro ao buscar favoritos:", error);
+        return [];
+    }
+}
