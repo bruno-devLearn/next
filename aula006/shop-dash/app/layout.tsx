@@ -1,3 +1,4 @@
+import { TopBar } from "./_components/TopBar";
 import "./globals.css";
 
 export default function RootLayout({
@@ -7,7 +8,12 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body>
+                <div className="min-h-screen bg-background">
+                    <TopBar />
+                    {children}
+                </div>
+            </body>
         </html>
     );
 }
