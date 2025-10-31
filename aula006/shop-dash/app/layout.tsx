@@ -1,3 +1,4 @@
+import { ThemeProvider } from "./_components/ThemeProvider";
 import { TopBar } from "./_components/TopBar";
 import "./globals.css";
 
@@ -9,10 +10,10 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body>
-                <div className="min-h-screen bg-background">
+                <ThemeProvider>
                     <TopBar />
                     {children}
-                </div>
+                </ThemeProvider>
             </body>
         </html>
     );

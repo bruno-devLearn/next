@@ -35,7 +35,7 @@ export function SelectPage() {
                 const hoverClasses = "hover:bg-accent";
 
                 const baseClasses =
-                    "flex items-center gap-2 px-3 py-2 rounded-lg transition-colors";
+                    "flex items-center gap-2 px-3 py-2 rounded-lg transition-colors text-primary";
 
                 return (
                     <button
@@ -46,7 +46,7 @@ export function SelectPage() {
                         }`}
                     >
                         {icon}
-                        <span>{label}</span>
+                        <span className="hidden sm:inline">{label}</span>
                     </button>
                 );
             })}
