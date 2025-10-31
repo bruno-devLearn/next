@@ -1,5 +1,5 @@
-import { ThemeProvider } from "./_components/ThemeProvider";
-import { TopBar } from "./_components/TopBar";
+import { ThemeProvider } from "./_components/(topbar)/ThemeProvider";
+import { TopBar } from "./_components/(topbar)/TopBar";
 import "./globals.css";
 
 export default function RootLayout({

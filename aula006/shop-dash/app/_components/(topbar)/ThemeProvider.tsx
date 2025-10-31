@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { useShop } from "../_utils/store";
-import { getTheme } from "../_utils/localStorage";
+import { useShop } from "@/app/_utils/store";
+import { getTheme } from "@/app/_utils/localStorage";
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const { theme, updateTheme } = useShop();

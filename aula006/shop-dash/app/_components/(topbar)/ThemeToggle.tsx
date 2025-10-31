@@ -1,7 +1,7 @@
 "use client";
 
+import { useShop } from "@/app/_utils/store";
 import { FiMoon, FiSun } from "react-icons/fi";
-import { useShop } from "../_utils/store";
 
 export function ThemeToggle() {
     const { theme, updateTheme } = useShop();
