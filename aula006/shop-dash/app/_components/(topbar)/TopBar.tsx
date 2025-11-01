@@ -2,6 +2,7 @@ import Link from "next/link";
 import { FiShoppingBag } from "react-icons/fi";
 import { SelectPage } from "./SelectPage";
 import { ThemeToggle } from "./ThemeToggle";
+import { Suspense } from "react";
 
 export function TopBar() {
     return (
@@ -14,7 +15,9 @@ export function TopBar() {
                     </div>
                 </Link>
                 <nav className="flex items-center gap-4">
-                    <SelectPage />
+                    <Suspense fallback={null}>
+                        <SelectPage />
+                    </Suspense>
                     <ThemeToggle />
                 </nav>
             </div>

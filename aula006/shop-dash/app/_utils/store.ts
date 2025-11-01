@@ -5,18 +5,22 @@ interface StoreProps {
     theme: string;
     category: string;
     favorites: string[];
+    isIncludes: boolean;
     updateTheme: (newValue: string) => void;
     updateCateg: (newValue: string) => void;
     updateFav: (newArray: string[]) => void;
+    updateIncludes: (newValu: boolean) => void;
 }
 
 export const useShop = create<StoreProps>((set) => ({
     theme: "light",
     category: "",
     favorites: [],
+    isIncludes: false,
     updateTheme: (newValue) => updateThemeFunct(newValue, set),
     updateCateg: (newValue) => set({ category: newValue }),
     updateFav: (newArray) => set({ favorites: newArray }),
+    updateIncludes: (newValue) => set({ isIncludes: newValue }),
 }));
 
 function updateThemeFunct(
