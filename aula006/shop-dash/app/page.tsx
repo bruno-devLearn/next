@@ -18,8 +18,8 @@ export default async function Home() {
     return (
         <main>
             <div className="container mx-auto px-4 py-8">
-                <Filters categories={uniqueCategories} />
                 <Suspense fallback={<Loading />}>
+                    <Filters categories={uniqueCategories} />
                     <Cards data={data} />
                 </Suspense>
             </div>
