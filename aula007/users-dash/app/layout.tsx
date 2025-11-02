@@ -7,7 +7,13 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body>
+                <div className="min-h-screen bg-background">
+                    <div className="container mx-auto p-6 max-w-4xl">
+                        {children}
+                    </div>
+                </div>
+            </body>
         </html>
     );
 }
