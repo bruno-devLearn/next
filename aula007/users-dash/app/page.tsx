@@ -2,12 +2,14 @@ import { FiUsers } from "react-icons/fi";
 
 import { getUsers } from "./_utils/fecth";
 import { Card } from "./_components/Card";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export default async function Home() {
     const users = await getUsers();
 
     return (
-        <>
+        <Suspense fallback={<Loading />}>
             <div className="mb-8">
                 <div className="flex items-center gap-3 mb-2">
                     <FiUsers className="lucide lucide-users w-8 h-8" />
@@ -23,6 +25,6 @@ export default async function Home() {
                     <Card key={user.id} user={user} />
                 ))}
             </div>
-        </>
+        </Suspense>
     );
 }
