@@ -10,23 +10,22 @@ import { useState } from "react";
 export default function Home() {
     const [input, setinput] = useState("");
 
-    const { setCurrentUser } = useUser();
+    const { setCurrentUser, updateUsers } = useUser();
     const router = useRouter();
 
     async function handleSubmit(formData: FormData) {
         const userName = formData.get("username") as string;
         const users = getUsers();
 
-        const user: UserProps = {
-            userName: userName,
-            posts: [],
-        };
-
+        const userBase: UserProps = { userName, posts: [] };
         const exists = users.some((u) => u.userName === userName);
 
-        if (!exists) {
-            setUsers([...users, user]);
-        }
+        const newUsers = exists ? users : [...users, userBase];
+
+        setUsers(newUsers); // salva no localStorage
+        updateUsers(newUsers); // sincroniza com o Zustand
+
+        const user = newUsers.find((u) => u.userName === userName)!;
 
         setCurrentUser(user);
         router.push("/posts");

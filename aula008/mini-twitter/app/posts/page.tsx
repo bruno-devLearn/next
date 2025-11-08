@@ -1,14 +1,17 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "../_utils/store";
 import { useRouter } from "next/navigation";
 import { getUsers, setUsers } from "../_utils/localStorage";
-import "./posts.css";
 import { handleSubmit } from "./_utils/actions";
+import { EmptyState } from "./_components/PostCard";
+import { PostList } from "./_components/PostList";
+import "./posts.css";
 
 export default function Page() {
     const { currentUser, setCurrentUser, updateUsers, users } = useUser();
+    const [editingId, setEditingId] = useState<null | number>(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -18,10 +21,6 @@ export default function Page() {
             updateUsers(getUsers());
         }
     }, [currentUser, router, users, updateUsers]);
-
-    useEffect(() => {
-        console.log(users);
-    }, [users]);
 
     return (
         <div className="posts-page">
@@ -42,6 +41,7 @@ export default function Page() {
                         Sair
                     </button>
                 </div>
+
                 <div className="new-post-section">
                     <h2>Criar Novo Post</h2>
                     <form
@@ -55,7 +55,6 @@ export default function Page() {
                                 users,
                                 setUsers
                             );
-
                             e.currentTarget.reset();
                         }}
                     >
@@ -69,7 +68,21 @@ export default function Page() {
                         </button>
                     </form>
                 </div>
-                <div className="post-list-section"></div>
+
+                <div className="post-list-section">
+                    <h2>Seus Posts ({currentUser.posts.length})</h2>
+                    <div className="post-list">
+                        {currentUser.posts.length === 0 ? (
+                            <EmptyState />
+                        ) : (
+                            <PostList
+                                posts={currentUser.posts}
+                                editingId={editingId}
+                                setEditingId={setEditingId}
+                            />
+                        )}
+                    </div>
+                </div>
             </div>
         </div>
     );
