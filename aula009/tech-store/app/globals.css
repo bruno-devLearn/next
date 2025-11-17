@@ -29,8 +29,56 @@
 }
 
 * {
-    font-family: "Inter";
+    font-family: "Inter", sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+.light {
+    --bg-primary: var(--gray-100);
+    --bg-secondary: var(--white);
+
+    --logo-text: var(--gray-900);
+
+    --bg-input: var(--gray-200);
+    --bg-input-focus: var(--white);
+    --border-input: var(--gray-700);
+    --text-input: var(--gray-400);
+
+    --search-icon: var(--gray-500);
+
+    --bg-action-btn: var(--gray-100);
+    --border-action-btn: var(--gray-200);
+    --border-action-btn-hover: var(--gray-300);
+    --bg-action-btn-hover: var(--gray-200);
+
+    --actions-icon: var(--gray-700);
+}
+
+.dark {
+    --bg-primary: var(--gray-950);
+    --bg-secondary: var(--gray-900);
+
+    --logo-text: var(--gray-50);
+
+    --bg-input: var(--gray-800);
+    --bg-input-focus: var(--gray-700);
+    --border-input: var(--gray-700);
+    --text-input: var(--gray-500);
+
+    --search-icon: var(--gray-400);
+
+    --bg-action-btn: var(--gray-800);
+    --border-action-btn: var(--gray-700);
+    --border-action-btn-hover: var(--gray-600);
+    --bg-action-btn-hover: var(--gray-700);
+
+    --actions-icon: var(--gray-300);
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-primary);
 }
