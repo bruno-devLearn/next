@@ -1,5 +1,11 @@
 export type Theme = "light" | "dark";
 
+export interface CategoryProps {
+    slug: string;
+    name: string;
+    url: string;
+}
+
 export interface ProductProps {
     id: number;
     title: string;

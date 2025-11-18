@@ -1,7 +1,7 @@
 import axios from "axios";
-import { ProductProps } from "./types";
+import { CategoryProps, ProductProps } from "./types";
 
-export async function fetchData(
+export async function fetchProducts(
     searchValue?: string,
     globalId?: number
 ): Promise<ProductProps | ProductProps[]> {
@@ -19,4 +19,9 @@ export async function fetchData(
 
     const res = await axios.get(base);
     return res.data.products as ProductProps[]; // lista padrão
+}
+
+export async function fetchCategories(): Promise<CategoryProps[]> {
+    const res = await axios.get("https://dummyjson.com/products/categories");
+    return res.data as CategoryProps[];
 }

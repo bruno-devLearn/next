@@ -54,8 +54,10 @@
     --bg-action-btn-hover: var(--gray-200);
 
     --actions-icon: var(--gray-700);
-
     --error-desc: var(--gray-400);
+    --categ-btn: var(--gray-50);
+
+    --categ-bg-hover: var(--gray-100);
 }
 
 .dark {
@@ -79,12 +81,16 @@
     --actions-icon: var(--gray-300);
 
     --error-desc: var(--gray-600);
+
+    --categ-btn: var(--gray-800);
+    --categ-bg-hover: var(--gray-700);
 }
 
-body {
-    width: 100vw;
-    height: 100vh;
+.app-container {
+    width: 100%;
+    height: 100%;
     background-color: var(--bg-primary);
+    transition: all 0.3s ease;
 }
 
 .loading-container,
