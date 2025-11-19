@@ -8,19 +8,21 @@ import Loading from "@/app/loading";
 import "./main.css";
 
 export function MainContent() {
-    const { searchValue, globalId } = useShop();
+    const { searchValue, globalId, selectedCategs } = useShop();
 
     const {
         data,
         isLoading: productsLoading,
         isError: productsError,
-    } = useProducts(searchValue, globalId);
+    } = useProducts(searchValue, globalId, selectedCategs);
 
     const { isLoading: categoriesLoading, isError: categoriesError } =
         useCategories();
 
     const isLoading = productsLoading || categoriesLoading;
     const isError = productsError || categoriesError;
+
+    console.log(data);
 
     return (
         <div className="main-content">

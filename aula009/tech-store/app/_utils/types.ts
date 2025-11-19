@@ -6,6 +6,13 @@ export interface CategoryProps {
     url: string;
 }
 
+export interface DataProps {
+    products: ProductProps[];
+    total: number;
+    skip: number;
+    limit: number;
+}
+
 export interface ProductProps {
     id: number;
     title: string;
