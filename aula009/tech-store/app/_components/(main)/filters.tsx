@@ -2,10 +2,18 @@
 
 import { useShop } from "@/app/_utils/store";
 import { useCategories } from "@/app/_utils/useProducts";
+import { useEffect } from "react";
 
 export function Filters() {
-    const { selectedCategs, setCategs } = useShop();
+    const { selectedCategs, setCategs, searchValue, setSearch } = useShop();
     const { data } = useCategories();
+
+    useEffect(() => {
+        if (searchValue) {
+            setCategs(["todas"]);
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [searchValue]);
 
     const list = data ? data.map((c) => c.slug) : [];
     const categsArray = ["todas", ...list];
@@ -17,20 +25,18 @@ export function Filters() {
             return;
         }
 
-        // caso contrário, categoria normal
         let newArr = [...selectedCategs];
 
-        // se já tem, remove
         if (newArr.includes(categ)) {
             newArr = newArr.filter((c) => c !== categ);
             if (newArr.length === 0) newArr.push("todas");
         } else {
-            // se não tem, adiciona
             newArr = newArr.filter((c) => c !== "todas"); // remove "todas"
             newArr.push(categ);
         }
 
         setCategs(newArr);
+        setSearch(undefined);
     };
 
     return (
