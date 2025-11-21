@@ -5,13 +5,18 @@ import { formatted } from "./formated";
 export async function fetchProducts(
     searchValue?: string,
     globalId?: number,
-    categories: string[] = []
+    categories: string[] = [],
+    index: number
 ): Promise<DataProps> {
     const base = "https://dummyjson.com/products";
 
+    // tratar 'index' como número da página (0-based)
+    const page = index;
+    const skip = page * 30;
+
     if (searchValue) {
         const res = await axios.get(
-            `${base}/search?q=${encodeURIComponent(searchValue)}`
+            `${base}/search?q=${encodeURIComponent(searchValue)}&skip=${skip}`
         );
 
         return res.data as DataProps;
@@ -23,7 +28,6 @@ export async function fetchProducts(
     }
 
     if (categories.length > 0 && !categories.includes("todas")) {
-        // para cada categoria retornamos o array de produtos e depois concatenamos
         const promises = categories.map((categ) =>
             axios
                 .get(`${base}/category/${encodeURIComponent(categ)}`)
@@ -31,11 +35,11 @@ export async function fetchProducts(
         );
 
         const results = await Promise.all(promises); // array de arrays
-        const teste = formatted(results);
-        return teste;
+        const dt = formatted(results, page);
+        return dt;
     }
 
-    const res = await axios.get(base);
+    const res = await axios.get(`${base}?skip=${skip}`);
     return res.data as DataProps;
 }
 

@@ -60,6 +60,7 @@
     --categ-bg-hover: var(--gray-100);
 
     --products-title-color: var(--gray-800);
+    --page-btn: var(--white);
 }
 
 .dark {
@@ -88,6 +89,7 @@
     --categ-bg-hover: var(--gray-700);
 
     --products-title-color: var(--gray-400);
+    --page-btn: var(--gray-800);
 }
 
 .app-container {

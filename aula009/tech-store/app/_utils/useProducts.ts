@@ -4,7 +4,8 @@ import { fetchCategories, fetchProducts } from "./fetch";
 export function useProducts(
     searchValue?: string,
     globalId?: number,
-    categories: string[] = []
+    categories: string[] = [],
+    index: number
 ) {
     return useQuery({
         // incluir `categories` na queryKey para disparar refetch quando mudar
@@ -13,8 +14,9 @@ export function useProducts(
             searchValue ?? null,
             globalId ?? null,
             categories,
+            index,
         ],
-        queryFn: () => fetchProducts(searchValue, globalId, categories),
+        queryFn: () => fetchProducts(searchValue, globalId, categories, index),
         staleTime: 5 * 60 * 1000,
         gcTime: 10 * 60 * 1000,
     });

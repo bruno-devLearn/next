@@ -1,5 +1,6 @@
 import { DataProps } from "@/app/_utils/types";
 import { Card } from "./Card";
+import { Pagination } from "./pagination";
 
 export function ProductsSection({ data }: { data: DataProps }) {
     return (
@@ -13,6 +14,7 @@ export function ProductsSection({ data }: { data: DataProps }) {
                     <Card key={p.id} product={p} />
                 ))}
             </div>
+            {data.total > 30 ? <Pagination data={data} /> : null}
         </div>
     );
 }

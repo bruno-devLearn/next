@@ -5,12 +5,14 @@ import { useCategories } from "@/app/_utils/useProducts";
 import { useEffect } from "react";
 
 export function Filters() {
-    const { selectedCategs, setCategs, searchValue, setSearch } = useShop();
+    const { selectedCategs, setCategs, searchValue, setSearch, setIndex } =
+        useShop();
     const { data } = useCategories();
 
     useEffect(() => {
         if (searchValue) {
             setCategs(["todas"]);
+            setIndex(0);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchValue]);
@@ -22,6 +24,7 @@ export function Filters() {
         // clicou em "todas"
         if (categ === "todas" || selectedCategs.length === list.length - 1) {
             setCategs(["todas"]);
+            setIndex(0);
             return;
         }
 
@@ -37,6 +40,7 @@ export function Filters() {
 
         setCategs(newArr);
         setSearch(undefined);
+        setIndex(0);
     };
 
     return (
