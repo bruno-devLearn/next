@@ -9,8 +9,6 @@ function chunkArray<T>(arr: T[], size: number): T[][] {
 }
 
 export function formatted(results: DataProps[], page: number): DataProps {
-    console.log(page);
-
     const total = results.reduce((acc, dt) => acc + dt.total, 0);
     const productsList = results.flatMap((dt) => dt.products);
     const dividido = chunkArray(productsList, 30);
