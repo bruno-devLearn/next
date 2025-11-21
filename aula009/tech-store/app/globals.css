@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+    --gray-950: #0a0a0a;
+    --gray-900: #171717;
+    --gray-800: #262626;
+    --gray-700: #404040;
+    --gray-600: #525252;
+    --gray-500: #737373;
+    --gray-400: #a3a3a3;
+    --gray-300: #d4d4d4;
+    --gray-200: #e5e5e5;
+    --gray-100: #f5f5f5;
+    --gray-50: #fafafa;
+
+    --blue-600: #2563eb;
+    --blue-500: #3b82f6;
+    --blue-400: #60a5fa;
+
+    --red-900: #7f1d1d;
+    --red-600: #dc2626;
+    --red-500: #ef4444;
+
+    --yellow-400: #fbbf24;
+
+    --green-500: #22c55e;
+
+    --white: #fff;
+}
+
+* {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.light {
+    --bg-primary: var(--gray-100);
+    --bg-secondary: var(--white);
+
+    --logo-text: var(--gray-900);
+
+    --bg-input: var(--gray-200);
+    --bg-input-focus: var(--white);
+    --border-input: var(--gray-700);
+    --text-input: var(--gray-400);
+
+    --search-icon: var(--gray-500);
+
+    --bg-action-btn: var(--gray-100);
+    --border-action-btn: var(--gray-200);
+    --border-action-btn-hover: var(--gray-300);
+    --bg-action-btn-hover: var(--gray-200);
+
+    --actions-icon: var(--gray-700);
+    --error-desc: var(--gray-400);
+    --categ-btn: var(--gray-50);
+
+    --categ-bg-hover: var(--gray-100);
+
+    --products-title-color: var(--gray-800);
+    --page-btn: var(--white);
+}
+
+.dark {
+    --bg-primary: var(--gray-950);
+    --bg-secondary: var(--gray-900);
+
+    --logo-text: var(--gray-50);
+
+    --bg-input: var(--gray-800);
+    --bg-input-focus: var(--gray-700);
+    --border-input: var(--gray-700);
+    --text-input: var(--gray-500);
+
+    --search-icon: var(--gray-400);
+
+    --bg-action-btn: var(--gray-800);
+    --border-action-btn: var(--gray-700);
+    --border-action-btn-hover: var(--gray-600);
+    --bg-action-btn-hover: var(--gray-700);
+
+    --actions-icon: var(--gray-300);
+
+    --error-desc: var(--gray-600);
+
+    --categ-btn: var(--gray-800);
+    --categ-bg-hover: var(--gray-700);
+
+    --products-title-color: var(--gray-400);
+    --page-btn: var(--gray-800);
+}
+
+.app-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    transition: all 0.3s ease;
+}
+
+.loading-container,
+.error-screen {
+    display: flex;
+    padding: 80px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    height: 100%;
+}
+
+.spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--border-action-btn);
+    border-radius: 50%;
+    border-top: 1px solid var(--blue-500);
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading-text {
+    color: var(--search-icon);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.error-box {
+    background-color: var(--bg-secondary);
+    max-width: 480px;
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--bg-input);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 40px;
+}
+
+.error-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--logo-text);
+    margin-bottom: 16px;
+}
+
+.error-title {
+    color: var(--logo-text);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 36px;
+    margin-bottom: 12px;
+}
+
+.error-desc {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    color: var(--error-desc);
+    margin-bottom: 28px;
+}
+
+.error-btn {
+    display: inline-flex;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background-color: var(--blue-600);
+    cursor: pointer;
+    border: none;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    transition: background 0.2s ease;
+}
+
+.error-btn:hover {
+    border-radius: 8px;
+    background: #1e4fcf;
+}
