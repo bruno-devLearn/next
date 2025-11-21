@@ -22,14 +22,12 @@ export function MainContent() {
     const isLoading = productsLoading || categoriesLoading;
     const isError = productsError || categoriesError;
 
-    console.log(data);
-
     return (
         <div className="main-content">
             <div className="content-wrapper">
                 {isLoading ? <Loading /> : null}
                 {isError ? <Error /> : null}
-                {data ? <ContentWrapper /> : null}
+                {data ? <ContentWrapper data={data} /> : null}
             </div>
         </div>
     );

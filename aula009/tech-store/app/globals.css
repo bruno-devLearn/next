@@ -58,6 +58,8 @@
     --categ-btn: var(--gray-50);
 
     --categ-bg-hover: var(--gray-100);
+
+    --products-title-color: var(--gray-800);
 }
 
 .dark {
@@ -84,6 +86,8 @@
 
     --categ-btn: var(--gray-800);
     --categ-bg-hover: var(--gray-700);
+
+    --products-title-color: var(--gray-400);
 }
 
 .app-container {
