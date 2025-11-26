@@ -1,3 +1,5 @@
+import { Footer } from "./_components/Footer";
+import { Header } from "./_components/Header";
 import "./globals.css";
 
 export default function RootLayout({
@@ -7,7 +9,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body>{children}</body>
+            <body>
+                <Header />
+                <main className="py-8">{children}</main>
+                <Footer />
+            </body>
         </html>
     );
 }
