@@ -2,14 +2,24 @@
 
 import { useQuery } from "@tanstack/react-query";
 import { fetchData } from "./_utils/fetchPosts";
+import { usePosts } from "./_utils/store";
+import Error from "./error";
+import Loading from "./loading";
 
 export default function Home() {
-    const { data } = useQuery({
+    const { searchValue } = usePosts();
+
+    const { data, isError, isLoading } = useQuery({
         queryKey: ["products"],
-        queryFn: () => fetchData(),
+        queryFn: () => fetchData(searchValue),
     });
 
     console.log(data);
 
-    return <h1>teste</h1>;
+    return (
+        <>
+            {isError ? <Error /> : null}
+            {isLoading ? <Loading /> : null}
+        </>
+    );
 }
