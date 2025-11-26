@@ -9,11 +9,11 @@ export async function fetchData(
 
     if (searchValue) {
         const res = await axios.get(
-            `${baseUrl}search?q=${searchValue}_page=${page}`
+            `${baseUrl}/search?q=${searchValue}&_page=${page}`
         );
         return res.data;
     }
 
-    const res = await axios.get(`${baseUrl}_page=${page}`);
+    const res = await axios.get(`${baseUrl}?_page=${page}`);
     return res.data;
 }
