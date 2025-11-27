@@ -1,5 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { fetchData, FetchLikes } from "./fetchPosts";
+import { deletePost, postLike } from "./posts";
 
 export function useGetPosts(searchValue?: string, page: number = 1) {
     const { data, isError, isLoading } = useQuery({
@@ -17,4 +18,29 @@ export function useGetLikes(id: number) {
     });
 
     return { data, isError, isLoading };
+}
+
+export function usePostLike() {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: (id: number) => postLike(id),
+        onSuccess: (_data, id) => {
+            queryClient.invalidateQueries(["likes", id]);
+        },
+    });
+}
+
+export function useDeletePost() {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        mutationFn: (id: number) => deletePost(id),
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: ["products"],
+                exact: false,
+            });
+        },
+    });
 }

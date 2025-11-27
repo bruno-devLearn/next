@@ -1,7 +1,7 @@
 import { Datum } from "@/app/_utils/types";
-import { BiTrash } from "react-icons/bi";
-import { FiEdit2 } from "react-icons/fi";
 import { LikeBtn } from "./LikeBtn";
+import { EditBtn } from "./EditBtn";
+import { DeleteBtn } from "./DeleteBtn";
 
 export function Post({ post }: { post: Datum }) {
     return (
@@ -13,18 +13,8 @@ export function Post({ post }: { post: Datum }) {
                 </div>
                 <div className="flex items-center gap-2 flex-shrink-0">
                     <LikeBtn id={post.id} />
-                    <button
-                        className="cursor-pointer p-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
-                        title="Editar post"
-                    >
-                        <FiEdit2 className="lucide lucide-pen w-4 h-4 text-blue-600" />
-                    </button>
-                    <button
-                        className="cursor-pointer p-2 rounded-lg border border-gray-300 hover:bg-red-50 transition-colors disabled:opacity-50"
-                        title="Deletar post"
-                    >
-                        <BiTrash className="lucide lucide-trash2 lucide-trash-2 w-4 h-4 text-red-600" />
-                    </button>
+                    <EditBtn id={post.id} />
+                    <DeleteBtn id={post.id} />
                 </div>
             </div>
         </div>
