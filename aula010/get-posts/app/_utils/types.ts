@@ -36,3 +36,8 @@ export interface LikeProps {
     postId: number;
     likes: number;
 }
+
+export interface Post {
+    title: string;
+    body: string;
+}
