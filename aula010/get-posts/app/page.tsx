@@ -15,8 +15,6 @@ export default function Home() {
         setError(isError);
     }, [isError, setError]);
 
-    console.log(data);
-
     return (
         <>
             {error ? <Error /> : null}

@@ -11,6 +11,7 @@ export async function fetchData(
         const res = await axios.get(
             `${baseUrl}/search?q=${searchValue}&_page=${page}`
         );
+
         return res.data;
     }
 

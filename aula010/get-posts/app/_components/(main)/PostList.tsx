@@ -7,7 +7,7 @@ import { Post } from "./Post";
 
 export function PostList() {
     const { searchValue } = usePosts();
-    const { data } = useGetPosts();
+    const { data } = useGetPosts(searchValue);
 
     const dtMap = !searchValue
         ? (data as PostsProps).data
