@@ -31,3 +31,8 @@ export interface Pagination {
 export interface PostsBySearch extends Pagination {
     results: Datum[];
 }
+
+export interface LikeProps {
+    postId: number;
+    likes: number;
+}

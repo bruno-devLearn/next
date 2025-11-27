@@ -1,25 +1,25 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { fetchData } from "./_utils/fetchPosts";
 import { usePosts } from "./_utils/store";
+import { MainContent } from "./_components/(main)/MainContent";
+import { useGetPosts } from "./_utils/hooks";
 import Error from "./error";
 import Loading from "./loading";
-import { MainContent } from "./_components/(main)/MainContent";
+import { useEffect } from "react";
 
 export default function Home() {
-    const { searchValue } = usePosts();
+    const { searchValue, error, setError } = usePosts();
+    const { data, isError, isLoading } = useGetPosts(searchValue);
 
-    const { data, isError, isLoading } = useQuery({
-        queryKey: ["products", searchValue],
-        queryFn: () => fetchData(searchValue),
-    });
+    useEffect(() => {
+        setError(isError);
+    }, [isError, setError]);
 
     console.log(data);
 
     return (
         <>
-            {isError ? <Error /> : null}
+            {error ? <Error /> : null}
             {isLoading ? <Loading /> : null}
             {data ? <MainContent /> : null}
         </>

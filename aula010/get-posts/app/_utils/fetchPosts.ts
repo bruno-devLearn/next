@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PostsBySearch, PostsProps } from "./types";
+import { LikeProps, PostsBySearch, PostsProps } from "./types";
 
 export async function fetchData(
     searchValue?: string,
@@ -15,5 +15,10 @@ export async function fetchData(
     }
 
     const res = await axios.get(`${baseUrl}?_page=${page}`);
+    return res.data;
+}
+
+export async function FetchLikes(id: number): LikeProps {
+    const res = await axios.get(`https://apimocker.com/posts/${id}/likes`);
     return res.data;
 }
