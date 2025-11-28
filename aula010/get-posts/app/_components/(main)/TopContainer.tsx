@@ -1,17 +1,20 @@
 "use client";
 
+import { usePosts } from "@/app/_utils/store";
 import { useRouter } from "next/navigation";
 import { BiPlus } from "react-icons/bi";
 
-//TODO: apos criar a paginação, adicionar a variavel no paragrafo
 export function TopContainer() {
+    const { page, totalPages } = usePosts();
     const router = useRouter();
 
     return (
         <div className="flex items-center justify-between mb-8">
             <div>
                 <h1 className="text-gray-900">Lista de Posts</h1>
-                <p className="text-gray-600 mt-1">Página 1 de 10</p>
+                <p className="text-gray-600 mt-1">
+                    Página {page} de {!totalPages ? 1 : totalPages}
+                </p>
             </div>
             <button
                 onClick={() => router.push("/create-post")}

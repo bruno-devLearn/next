@@ -3,7 +3,7 @@ import { LikeProps, Post, PostProps, PostsBySearch, PostsProps } from "./types";
 
 export async function fetchData(
     searchValue?: string,
-    page: number = 1
+    page: number
 ): PostsProps | PostsBySearch {
     const baseUrl = "https://apimocker.com/posts";
 

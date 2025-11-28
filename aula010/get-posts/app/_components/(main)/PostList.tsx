@@ -6,8 +6,8 @@ import { PostsBySearch, PostsProps } from "@/app/_utils/types";
 import { Post } from "./Post";
 
 export function PostList() {
-    const { searchValue } = usePosts();
-    const { data } = useGetPosts(searchValue);
+    const { searchValue, page } = usePosts();
+    const { data } = useGetPosts(searchValue, page);
 
     const dtMap = !searchValue
         ? (data as PostsProps).data

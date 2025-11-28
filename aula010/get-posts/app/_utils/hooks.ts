@@ -3,7 +3,7 @@ import { editPost, fetchData, FetchLikes, fetchPost } from "./fetchPosts";
 import { createPost, deletePost, postLike } from "./posts";
 import { Post } from "./types";
 
-export function useGetPosts(searchValue?: string, page: number = 1) {
+export function useGetPosts(searchValue?: string, page: number) {
     const { data, isError, isLoading } = useQuery({
         queryKey: ["products", searchValue, page],
         queryFn: () => fetchData(searchValue, page),
