@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { fetchData, FetchLikes } from "./fetchPosts";
+import { editPost, fetchData, FetchLikes, fetchPost } from "./fetchPosts";
 import { createPost, deletePost, postLike } from "./posts";
 import { Post } from "./types";
 
@@ -51,6 +51,29 @@ export function useCreatePost() {
 
     return useMutation({
         mutationFn: (post: Post) => createPost(post),
+        onSuccess: () => {
+            queryClient.invalidateQueries({
+                queryKey: ["products"],
+                exact: false,
+            });
+        },
+    });
+}
+
+export function useGetPost(id: number) {
+    return useQuery({
+        queryKey: ["post", id],
+        queryFn: () => fetchPost(id),
+    });
+}
+
+export function useEditPost() {
+    const queryClient = useQueryClient();
+
+    return useMutation({
+        // receber um único objeto como variável
+        mutationFn: ({ id, post }: { id: number; post: Post }) =>
+            editPost(id, post),
         onSuccess: () => {
             queryClient.invalidateQueries({
                 queryKey: ["products"],

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { LikeProps, PostsBySearch, PostsProps } from "./types";
+import { LikeProps, Post, PostProps, PostsBySearch, PostsProps } from "./types";
 
 export async function fetchData(
     searchValue?: string,
@@ -22,4 +22,13 @@ export async function fetchData(
 export async function FetchLikes(id: number): LikeProps {
     const res = await axios.get(`https://apimocker.com/posts/${id}/likes`);
     return res.data;
+}
+
+export async function fetchPost(id: number): PostProps {
+    const res = await axios.get(`https://apimocker.com/posts/${id}`);
+    return res.data;
+}
+
+export async function editPost(id: number, post: Post) {
+    await axios.put(`https://apimocker.com/posts/${id}`, post);
 }

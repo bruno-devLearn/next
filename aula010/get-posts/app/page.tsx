@@ -8,17 +8,18 @@ import Loading from "./loading";
 import { useEffect } from "react";
 
 export default function Home() {
-    const { searchValue, error, setError } = usePosts();
+    const { searchValue, error, setError, loading, setLoad } = usePosts();
     const { data, isError, isLoading } = useGetPosts(searchValue);
 
     useEffect(() => {
         setError(isError);
-    }, [isError, setError]);
+        setLoad(isLoading);
+    }, [isError, setError, isLoading, setLoad]);
 
     return (
         <>
             {error ? <Error /> : null}
-            {isLoading ? <Loading /> : null}
+            {loading ? <Loading /> : null}
             {data ? <MainContent /> : null}
         </>
     );

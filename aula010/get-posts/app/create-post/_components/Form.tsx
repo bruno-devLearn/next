@@ -19,6 +19,12 @@ export function Form({ setError, setSucess }: FormProps) {
     useEffect(() => {
         setError(isError);
         setSucess(isSuccess);
+
+        if (isSuccess) {
+            setTimeout(() => {
+                redirect("/");
+            }, 2000);
+        }
     }, [isError, isSuccess, setError, setSucess]);
 
     const [title, setTitle] = useState("");
@@ -31,14 +37,6 @@ export function Form({ setError, setSucess }: FormProps) {
         if (!post) return;
         mutate(post);
     }
-
-    useEffect(() => {
-        if (isSuccess) {
-            setTimeout(() => {
-                redirect("/");
-            }, 2000);
-        }
-    }, [isSuccess]);
 
     return (
         <form className="space-y-6" onSubmit={(e) => handleSubmit(e)}>
