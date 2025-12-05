@@ -1,4 +1,4 @@
-import { PostProps, UserProps } from "@/app/utils/types";
+import { PostProps, UserProps } from "@/app/_utils/types";
 import axios from "axios";
 import { NextResponse } from "next/server";
 
