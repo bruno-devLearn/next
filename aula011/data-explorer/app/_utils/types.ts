@@ -45,3 +45,23 @@ export interface CommentsProps {
     email: string;
     body: string;
 }
+
+// transformed post interface
+export interface TransformedPostProps {
+    id: number;
+    title: string;
+    body: string;
+    commentsCount: number;
+}
+
+// API response interface
+export interface UserDetailsResponse {
+    user: UserProps;
+    posts: TransformedPostProps[];
+    totalPosts: number;
+}
+
+// error response interface
+export interface ErrorResponse {
+    error: string;
+}

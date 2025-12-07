@@ -1,21 +1,18 @@
-import { PostProps, UserProps } from "@/app/_utils/types";
+import {
+    PostProps,
+    UserProps,
+    CommentsProps,
+    UserDetailsResponse,
+} from "@/app/_utils/types";
 import axios from "axios";
 import { NextResponse } from "next/server";
 
 const baseUrl = "https://jsonplaceholder.typicode.com";
 
-interface CommentsProps {
-    postId: number;
-    id: number;
-    name: string;
-    email: string;
-    body: string;
-}
-
 export async function GET(
     request: Request,
     { params }: { params: Promise<{ id: string }> }
-) {
+): Promise<NextResponse<UserDetailsResponse>> {
     try {
         const { id } = await params;
 
