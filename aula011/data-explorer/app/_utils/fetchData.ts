@@ -1,20 +1,30 @@
-import axios from "axios";
 import { UserDetailsResponse } from "./types";
-import { Dispatch, SetStateAction } from "react";
+import axios from "axios";
 
-export async function getUser(
-    id: string,
-    setError: Dispatch<SetStateAction<boolean>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
-): Promise<UserDetailsResponse | undefined> {
-    setLoading(true); // Inicia o loading
+interface GetUserProps {
+    id: string;
+    setError: (newValue: Error) => void;
+    setIsLoading: (newValue: boolean) => void;
+}
+
+export async function getUser({
+    id,
+    setIsLoading,
+    setError,
+}: GetUserProps): Promise<UserDetailsResponse | undefined> {
+    setIsLoading(true);
+
     try {
         const res = await axios.get<UserDetailsResponse>(`/api/user/${id}`);
         return res.data;
-    } catch (error) {
-        setError(true); // Define erro como verdadeiro em caso de falha
-        console.error("Error fetching user data:", error); // Log do erro
+    } catch (err) {
+        if (err instanceof Error) {
+            setError(err);
+        } else {
+            setError(new Error("Erro desconhecido"));
+        }
+        return undefined;
     } finally {
-        setLoading(false); // Finaliza o loading
+        setIsLoading(false);
     }
 }
