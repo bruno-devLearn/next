@@ -100,7 +100,7 @@ export async function POST(request: NextRequest) {
  */
 export async function GET() {
     // Verifica o status de autenticação através do cookie 'auth'
-    const isAuth = (await cookies()).get("auth")?.value as boolean;
+    const isAuth = (await cookies()).get("auth")?.value === "true";
 
     // Se o usuário está autenticado, busca e retorna os dados da sessão
     if (isAuth) {
