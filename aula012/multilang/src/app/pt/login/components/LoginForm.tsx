@@ -1,8 +1,34 @@
+"use client";
+
 import { Mail, Lock } from "lucide-react";
 
 export function LoginForm() {
+    const currentLang = useGetLang();
+
+    const [error, setError] = useState("");
+
+    const handleSubit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+
+        const user: User = {
+            email,
+            password,
+        };
+
+        async function fetchData() {
+            await setAuth({ currentLang, user, setError });
+        }
+
+        fetchData();
+    };
+
     return (
-        <form className="space-y-6">
+        <form className="space-y-6" onClick={(e) => handleSubit(e)}>
             <div>
                 <label htmlFor="email" className="block text-gray-700 mb-2">
                     Email

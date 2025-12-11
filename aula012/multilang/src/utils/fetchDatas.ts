@@ -1,11 +1,12 @@
 import axios from "axios";
 import { AuthResponse, isAuthProps, User } from "./types";
+import { toastError, toastSucess } from "./toast";
 
 interface fethcDataProps {
     currentLang: "eng" | "pt";
     user?: User;
     setError: (newValue: string) => void;
-    setIsLoading: (newValue: boolean) => void;
+    setIsLoading?: (newValue: boolean) => void;
 }
 
 export async function getIsAuth({
@@ -17,7 +18,7 @@ export async function getIsAuth({
 
     try {
         const res = await axios.get<isAuthProps>(
-            "https://localhost:3000/api/login"
+            "http://localhost:3000/api/login"
         );
 
         return res.data;
@@ -42,10 +43,7 @@ export async function setAuth({
     currentLang,
     user,
     setError,
-    setIsLoading,
 }: fethcDataProps): Promise<AuthResponse> {
-    setIsLoading(true);
-
     try {
         if (!user?.email || !user.password || !user) {
             throw new Error(
@@ -56,10 +54,11 @@ export async function setAuth({
         }
 
         const res = await axios.post<AuthResponse>(
-            "https://localhost:3000/api/login",
+            "http://localhost:3000/api/login",
             user
         );
 
+        toastSucess(res.data.message);
         return { ...res.data, success: true };
     } catch (error) {
         let message =
@@ -73,8 +72,7 @@ export async function setAuth({
 
         setError(message);
 
+        toastError(message);
         return { message, success: false };
-    } finally {
-        setIsLoading(false);
     }
 }

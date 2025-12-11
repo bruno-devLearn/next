@@ -1,8 +1,38 @@
+"use client";
+
+import { setAuth } from "@/utils/fetchDatas";
+import { useGetLang } from "@/utils/hooks";
+import { User } from "@/utils/types";
 import { Mail, Lock } from "lucide-react";
+import { FormEvent, useState } from "react";
 
 export function LoginForm() {
+    const currentLang = useGetLang();
+
+    const [error, setError] = useState("");
+
+    const handleSubit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+
+        const email = formData.get("email") as string;
+        const password = formData.get("password") as string;
+
+        const user: User = {
+            email,
+            password,
+        };
+
+        async function fetchData() {
+            await setAuth({ currentLang, user, setError });
+        }
+
+        fetchData();
+    };
+
     return (
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={(e) => handleSubit(e)}>
             <div>
                 <label htmlFor="email" className="block text-gray-700 mb-2">
                     Email
@@ -18,7 +48,6 @@ export function LoginForm() {
                         type="email"
                         id="email"
                         name="email"
-                        required
                         placeholder="your@email.com"
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                     />
@@ -39,7 +68,6 @@ export function LoginForm() {
                         type="password"
                         id="password"
                         name="password"
-                        required
                         placeholder="••••••••"
                         className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-600 focus:border-transparent outline-none transition-all"
                     />
